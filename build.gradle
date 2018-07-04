@@ -29,6 +29,9 @@ dependencies {
     compile("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
     compile("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
     compile("org.yaml:snakeyaml:$snakeYamlVersion")
+    compile("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+    compile("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
 
     runtime("com.h2database:h2")
 
