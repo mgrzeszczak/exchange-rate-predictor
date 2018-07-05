@@ -1,0 +1,7 @@
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Exchange Rate Predictor',
+                'Implementation-Version': version,
+                'Main-Class': 'com.github.mgrzeszczak.erp.Application'
+    }
+}

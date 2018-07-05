@@ -9,47 +9,45 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+project(':api') {
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-group = 'com.github.mgrzeszczak'
-version = '1.0'
-sourceCompatibility = 1.8
+    group = 'com.github.mgrzeszczak'
+    version = '1.0'
+    sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 
-dependencies {
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-starter-webflux")
-    compile("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
-    compile("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
-    compile("org.yaml:snakeyaml:$snakeYamlVersion")
-    compile("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
-    compile("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        implementation("org.springframework.boot:spring-boot-starter-webflux")
+        implementation("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
+        implementation("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
+        implementation("org.yaml:snakeyaml:$snakeYamlVersion")
+        implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+        implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+        implementation("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
 
-    runtime("com.h2database:h2")
+        runtime("com.h2database:h2")
 
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
+        compileOnly("org.projectlombok:lombok:$lombokVersion")
 
-    testCompile("org.codehaus.groovy:groovy-backports-compat23:$groovyVersion")
-    testCompile("net.bytebuddy:byte-buddy:$byteBuddyVersion")
-    testCompile("org.spockframework:spock-spring:$spockVersion")
-    testCompile("org.spockframework:spock-core:$spockVersion")
-    testCompile("org.codehaus.groovy:groovy-all:$groovyVersion")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("io.projectreactor:reactor-test")
-}
-
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Exchange Rate Predictor',
-                'Implementation-Version': version,
-                'Main-Class': 'com.github.mgrzeszczak.erp.Application'
+        testImplementation("org.codehaus.groovy:groovy-backports-compat23:$groovyVersion")
+        testImplementation("net.bytebuddy:byte-buddy:$byteBuddyVersion")
+        testImplementation("org.spockframework:spock-spring:$spockVersion")
+        testImplementation("org.spockframework:spock-core:$spockVersion")
+        testImplementation("org.codehaus.groovy:groovy-all:$groovyVersion")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("io.projectreactor:reactor-test")
     }
 }
+
+
+
+

@@ -1,2 +1,4 @@
 rootProject.name = 'exchange-rate-predictor'
+include 'api',
+        'frontend'
 
