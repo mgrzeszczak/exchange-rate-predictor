@@ -2,7 +2,7 @@ import axios, { AxiosPromise } from "axios";
 
 export const ACTION_TYPE = "ACTION_TYPE";
 
-const host = "http://localhost:8090";
+const host = ""; // "http://localhost:8090";
 
 export enum ActionType {
     GET_CURRENCY_CODES,

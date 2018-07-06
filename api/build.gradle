@@ -5,3 +5,6 @@ jar {
                 'Main-Class': 'com.github.mgrzeszczak.erp.Application'
     }
 }
+
+
+
