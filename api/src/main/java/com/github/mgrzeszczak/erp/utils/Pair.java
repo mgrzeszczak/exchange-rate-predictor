@@ -8,5 +8,4 @@ public class Pair<A,B> {
     private final A left;
     private final B right;
 
-
 }

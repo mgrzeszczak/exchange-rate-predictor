@@ -1,5 +1,6 @@
 package com.github.mgrzeszczak.erp.web;
 
+import com.github.mgrzeszczak.erp.dto.PredictionData;
 import com.github.mgrzeszczak.erp.model.ExchangeRate;
 import com.github.mgrzeszczak.erp.service.ExchangeRatePredictionService;
 import com.github.mgrzeszczak.erp.service.ExchangeRateSearchService;
@@ -42,11 +43,10 @@ public class ExchangeRateController {
                 .toList();
     }
 
-    @GetMapping("/predict/{codes}/{from}/{to}")
-    public Flowable<ExchangeRate> predict(@PathVariable("codes") String codes,
-                                          @PathVariable("from") LocalDate from,
-                                          @PathVariable(value = "to", required = false) LocalDate to) {
-        return Flowable.empty();
+    @GetMapping("/predict/{codes}/{count}")
+    public Single<List<PredictionData>> predictNext(@PathVariable("codes") String codes,
+                                                    @PathVariable("count") int count) {
+        return exchangeRatePredictionService.predict(codes, count);
     }
 
 }

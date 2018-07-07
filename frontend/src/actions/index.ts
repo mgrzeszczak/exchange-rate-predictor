@@ -2,11 +2,12 @@ import axios, { AxiosPromise } from "axios";
 
 export const ACTION_TYPE = "ACTION_TYPE";
 
-const host = ""; // "http://localhost:8090";
+const host = "";
 
 export enum ActionType {
     GET_CURRENCY_CODES,
-    GET_EXCHANGE_RATES
+    GET_EXCHANGE_RATES,
+    PREDICT_EXCHANGE_RATES
 }
 
 export function getCurrencyCodes(): any {
@@ -21,5 +22,13 @@ export function getExchangeRates(codes: string[], from: string, to: string): any
     return {
         type: ActionType.GET_EXCHANGE_RATES,
         payload: axios.get(`${host}/api/exchange-rate/${joined}/${from}/${to}`)
+    };
+}
+
+export function predictExchangeRates(codes: string[], count: number): any {
+    const joined = codes.join(",");
+    return {
+        type: ActionType.PREDICT_EXCHANGE_RATES,
+        payload: axios.get(`${host}/api/exchange-rate/predict/${joined}/${count}`)
     };
 }

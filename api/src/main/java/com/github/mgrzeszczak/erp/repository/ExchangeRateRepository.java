@@ -13,19 +13,23 @@ import java.util.List;
 
 public interface ExchangeRateRepository extends JpaRepository<ExchangeRate, Long> {
 
-    @Query("from ExchangeRate where date between ?1 and ?2 and code in ?3")
+    @Query("from ExchangeRate where date >= ?1 and date <= ?2 and code in ?3")
     List<ExchangeRate> findAllBetween(LocalDate from, LocalDate to, Collection<String> codes);
 
     @Query("select DISTINCT(r.code) from ExchangeRate r")
     List<String> findDistinctCodes();
 
+    @NotNull
     default Flowable<String> rxFindDistinctCodes() {
         return Flowable.fromCallable(this::findDistinctCodes)
                 .flatMap(Flowable::fromIterable)
                 .subscribeOn(Schedulers.io());
     }
 
-    default Flowable<ExchangeRate> rxFindAllBetween(@NotNull LocalDate from, @NotNull LocalDate to, @NotNull Collection<String> codes) {
+    @NotNull
+    default Flowable<ExchangeRate> rxFindAllBetween(@NotNull LocalDate from,
+                                                    @NotNull LocalDate to,
+                                                    @NotNull Collection<String> codes) {
         return Flowable.fromCallable(() -> findAllBetween(from, to, codes))
                 .flatMap(Flowable::fromIterable)
                 .subscribeOn(Schedulers.io());

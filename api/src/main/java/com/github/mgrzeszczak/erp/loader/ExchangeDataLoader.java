@@ -8,6 +8,7 @@ import io.reactivex.Flowable;
 import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -25,18 +26,22 @@ public class ExchangeDataLoader {
     private final NbpApi nbpApi;
     private final LocalDateRangeGenerator localDateRangeGenerator;
     private final ExchangeRateRepository repository;
+    private final LocalDate from;
 
-    public ExchangeDataLoader(NbpApi nbpApi, LocalDateRangeGenerator localDateRangeGenerator, ExchangeRateRepository repository) {
+    public ExchangeDataLoader(NbpApi nbpApi,
+                              LocalDateRangeGenerator localDateRangeGenerator,
+                              ExchangeRateRepository repository,
+                              @Value("${nbp.import-from}") String importFrom) {
         this.nbpApi = nbpApi;
         this.localDateRangeGenerator = localDateRangeGenerator;
         this.repository = repository;
+        this.from = LocalDate.parse(importFrom);
     }
 
     @PostConstruct
     public void preloadData() {
-        LocalDate start = LocalDate.of(2018, 1, 2);
         LocalDate end = LocalDate.now();
-        Flowable.fromIterable(localDateRangeGenerator.generate(start, end, BATCH_SIZE))
+        Flowable.fromIterable(localDateRangeGenerator.generate(from, end, BATCH_SIZE))
                 .subscribeOn(Schedulers.io())
                 .map(v -> {
                     log.info("Pulling data between {} and {} for table {}", v.getLeft(), v.getRight(), TABLE);

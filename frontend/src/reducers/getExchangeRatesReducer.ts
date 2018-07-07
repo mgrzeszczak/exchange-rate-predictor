@@ -1,6 +1,6 @@
 import { ActionType } from "../actions";
 
-interface ExchangeRate {
+export interface ExchangeRate {
     id: number;
     value: number;
     currency: string;

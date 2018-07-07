@@ -48,12 +48,6 @@ class CurrencySelectorComponent extends Component<Props, any> {
 
     render() {
         return <Card style={{ margin: 0 }}>
-            {/* <CardHeader>
-                <Typography component="h">
-                    This impressive paella is a perfect party dish and a fun meal to cook together with
-                    your guests. Add 1 cup of frozen peas along with the mussels, if you like.
-                </Typography>
-            </CardHeader> */}
             <CardContent>
                 <FormGroup row>
                     {this.props.codes.map((code: string, index: number) =>
