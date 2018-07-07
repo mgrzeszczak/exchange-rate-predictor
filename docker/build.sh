@@ -5,3 +5,4 @@ cd ..
 cp api/build/libs/api-*.jar docker/api.jar
 cd docker
 docker build . -t exchange-rate-predictor:latest
+rm api.jar
