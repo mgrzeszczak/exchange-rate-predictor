@@ -28,6 +28,7 @@ After starting the application, visit http://localhost:8080/index.html.
 
 Application will preload data from table __A__ from __nbp.import-from__ (by default 2018-01-01) to current date, from the NBP api.
 It allows to plot exchange rates for selected currencies from a given time period, and to plot predicted values for the next week.
+Predictions are made using simple recursive linear regression based on a shifted time window of two weeks.
 
 ![frontend](doc/front.png)
 
