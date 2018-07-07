@@ -12,7 +12,7 @@ Application can be run as a docker image:
 1. Go to __docker__ folder and execute script `./build.sh`. This will create docker image called *exchange-rate-predictor*.
 2. Create a new docker container:
     ```
-    docker run -p 8080:80 [-e NBP_START_FROM=2018-01-01] exchange-rate-predictor:latest
+    docker run -p 8080:80 [-e NBP_IMPORT_FROM=2018-01-01] exchange-rate-predictor:latest
     ```
 
 ### Java JAR file
@@ -47,6 +47,7 @@ It allows to plot exchange rates for selected currencies from a given time perio
 4. Retrofit
 5. Lombok
 6. H2 database
+7. Docker
 
 
 ## License

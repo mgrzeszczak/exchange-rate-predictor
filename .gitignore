@@ -1,7 +1,9 @@
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
-
+.DS_Store
+**/build
+**/out
 ### STS ###
 .apt_generated
 .classpath
