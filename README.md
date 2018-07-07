@@ -12,7 +12,7 @@ Application can be run as a docker image:
 1. Go to __docker__ folder and execute script `./build.sh`. This will create docker image called *exchange-rate-predictor*.
 2. Create a new docker container:
     ```
-    docker run -p 8080:80 exchange-rate-predictor:latest
+    docker run -p 8080:80 [-e NBP_START_FROM=2018-01-01] exchange-rate-predictor:latest
     ```
 
 ### Java JAR file
@@ -30,6 +30,23 @@ Application will preload data from table __A__ from __nbp.import-from__ (by defa
 It allows to plot exchange rates for selected currencies from a given time period, and to plot predicted values for the next week.
 
 ![frontend](doc/front.png)
+
+## Technology stack
+
+#### Frontend
+1. Typescript
+2. React
+3. Redux
+4. Material UI
+5. Chart.js
+
+#### Backend
+1. Spring 5
+2. RxJava
+3. Spock
+4. Retrofit
+5. Lombok
+6. H2 database
 
 
 ## License
