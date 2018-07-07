@@ -22,7 +22,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
-    implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    implementation("org.apache.commons:commons-math3:$apacheCommonsMathVersion")
 
     runtime("com.h2database:h2")
     compileOnly("org.projectlombok:lombok:$lombokVersion")
